@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="js/p5.min.js"></script>
+    <script src="js/p5.dom.js"></script>
+    <script src="js/sketch.js"></script>
+    <script src="js/cell.js"></script>
+    <script src="js/game.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Tic-Tac-Toe (v1.0.0)</h1>
+    </header>
+    <div class="container">
+      <div class="list">
+        <div class="list-items">
+          <h3>Rules:</h3>
+          <ul>
+            <li>Player 1:> Circle</li>
+            <li>Player 2:> Cross</li>
+          </ul>
+        </div>
+        <div class="list-items">
+          <h3>Scores:</h3>
+          <ul>
+            <li>Player 1: <span id="scoreOfA"></span></li>
+            <li>Player 2: <span id="scoreOfB"></span></li>
+          </ul> 
+        </div>
+        <div class="select">
+          <h4>Change Game Mode:</h4>
+          <select id="menu">
+            <option>Single Player</option>
+            <option>Multiplayer</option>
+          </select>
+          <button class="button" id="submit">Submit</button>
+        </div>
+        <div>
+          <button id="clearAll" class="button">Clear Hisory</button>
+        </div>
+      </div>
+      <div id="board">
+        <div class="status">
+          <strong id="playerStatus"></strong>
+          <h2 id="output"></h2>
+          <button id="reset" class="button">Reset</button>
+        </div>
+        <div id="canvas"></div>
+      </div>
+    </div>
+    <footer class="fixed-bottom center">&copy; Made by Kaushik Mitra</footer>
+  </body>
+</html>
