@@ -2,7 +2,6 @@
 // Player vs Player:   1
 // Player vs computer: 2
 // Multiplayer:        3
-var data;
 var cells = [];
 var noOfturns = 0;
 var reset;
@@ -46,10 +45,6 @@ function changeMode() {
 		clearCanvas();
 		gameMode = 1;
 	}
-}
-
-function preload() {
-	data = loadJSON("../data/data.json");
 }
 
 function setup() {
