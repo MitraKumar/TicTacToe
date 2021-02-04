@@ -65,7 +65,6 @@ function findBestMove() {
 			cells[i].markedBy = 1;
 
 			var moveVal = minMax(false);
-			console.log(moveVal, i);
 
 			if(moveVal > bestVal) {
 				index = i;
