@@ -1,5 +1,10 @@
 function checkDraw() {
-	return (!isWinner(0) && !isWinner(1));
+	for (let cell of cells) {
+		if (cell.markedBy === null) {
+			return false;
+		}
+	}
+	return true;
 }
 
 
@@ -48,15 +53,19 @@ function play() {
 }
 
 function findBestMove() {
-	var bestVal = -10000;
+	var bestVal = -Infinity;
 	var index = -1;
-	var player = 1;
-
+	/*
+		player:
+			0 -> human player
+			1 -> ai
+		*/
 	for(var i = 0; i < 9; i++) {
 		if(cells[i].markedBy === null) {
-			cells[i].markedBy = player;
+			cells[i].markedBy = 1;
 
 			var moveVal = minMax(false);
+			console.log(moveVal, i);
 
 			if(moveVal > bestVal) {
 				index = i;
@@ -70,18 +79,24 @@ function findBestMove() {
 }
 
 function minMax(isMax) {
-	var score = evaluate();
-	var player = 1;
-	var oponent = 0;
+	let score = evaluate();
 	if(score == 10 || score == -10 || score == 0) return score;
 
+	/*
+		player:
+			0 -> human player (oponent)
+			1 -> ai
+		*/
+	var player = 1;
+	var oponent = 0;
+
 	if(isMax) {
-		var best = -10000;
+		let best = -Infinity;
 		for(var i = 0; i < 9; i++) {
 			if(cells[i].markedBy === null) {
 
-				cells[i].markedBy = player;
-				var currentbest = minMax(!isMax);
+				cells[i].markedBy = 1;
+				var currentbest = minMax(false);
 				if(currentbest > best) {
 					best = currentbest;
 				}
@@ -91,25 +106,23 @@ function minMax(isMax) {
 		return best;
 	}
 
-	var best = 10000;
+	let best = Infinity;
 	for(var i = 0; i < 9; i++) {
 		if(cells[i].markedBy === null) {
 
-			cells[i].markedBy = oponent;
-			var currentbest = minMax(!isMax);
+			cells[i].markedBy = 0;
+			var currentbest = minMax(true);
 			if(currentbest < best) {
 				best = currentbest;
 			}
 			cells[i].markedBy = null;
 		}
 	}
-	// console.log(best);
 	return best;
 }
 
 function evaluate() {
 	if(isWinner(0)) return -10;
 	if(isWinner(1)) return 10;
-	if(noOfturns === 9) return 0;
-	return -10000;
+	if(checkDraw()) return 0;
 }
