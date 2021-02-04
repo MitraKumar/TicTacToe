@@ -61,7 +61,7 @@ function setup() {
 	output = select('#output');
 	scoreOf1 = select('#scoreOfA');
 	scoreOf2 = select('#scoreOfB');
-	playerStatus = select('#playerStatus');	
+	playerStatus = select('#playerStatus');
 	// console.log(data);
 	resetCanvas();
 }
@@ -78,7 +78,7 @@ function mousePressed() {
 			}
 		}
 	}
-	
+
 	if(clicked) {
 		if(players == 0) {
 			playerStatus.html("Turn of player " + 2);
@@ -100,7 +100,7 @@ function mousePressed() {
 					console.log("It worked");
 			}
 		}
-		
+
 		noOfturns++;
 		updateCanvas()
 		// console.log("Turn of player "+ (player));
@@ -109,7 +109,7 @@ function mousePressed() {
 
 function updateCanvas() {
 	background(255);
-	
+
 	if(cells.length > 0) {
 		checkStatus();
 	}
