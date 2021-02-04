@@ -130,7 +130,7 @@ function createGrid(row, col) {
 
 			var y = i*size;
 			var x = j*size;
-			cells.push(new Cell(x, y, size));
+			cells.push(new Cell(x, y, size, i, j));
 
 
 			// fill(255);
